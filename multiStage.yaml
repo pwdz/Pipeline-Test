@@ -39,9 +39,12 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.Repository.LocalPath)'
         includeRootFolder: False
+    - task: CmdLine@2
+      inputs:
+        script: mkdir -p '$(System.DefaultWorkingDirectory)/bin/goApp' 
     - task: PublishPipelineArtifact@1
       inputs: 
-        targetPath: $(System.DefaultWorkingDirectory)/bin
+        targetPath: $(System.DefaultWorkingDirectory)/bin/goApp
         artifactName: goApp
 
 - stage: test
