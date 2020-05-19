@@ -27,20 +27,16 @@ stages:
     
 - stage: staging
   dependsOn: test
+  displayName: ebiiiiiiiiiiiiiii
   jobs:
-  - job: deploy_staging
-    pool:
-      vmImage: 'Ubuntu 16.04'
+  - deployment: deploy_staging
     displayName: ebiiiiii
     enviroment: Staging
     strategy:
         runOnce:
             deploy:
                 steps:
-                    - script: echo this is ebiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii 
-    steps:
-    - script: echo Staging
-
+                - script: echo this is ebiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii 
 - stage: prod
   dependsOn: staging
   jobs:
