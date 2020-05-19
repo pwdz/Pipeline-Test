@@ -39,10 +39,10 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.Repository.LocalPath)'
         includeRootFolder: False
-        - task: PublishPipelineArtifact@1
-          inputs: 
-            targetPath: $(System.DefaultWorkingDirectory)/bin/goApp
-            artifactName: goApp
+    - task: PublishPipelineArtifact@1
+      inputs: 
+        targetPath: $(System.DefaultWorkingDirectory)/bin/goApp
+        artifactName: goApp
 
 - stage: test
   dependsOn: build
