@@ -43,6 +43,9 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish artifact'
       condition: succeededOrFailed()
+      inputs:
+      artifactName: 'FooBar'
+      targetPath: 'artifacts'
 
 
 
@@ -66,7 +69,10 @@ stages:
         runOnce:
             deploy:
                 steps:
-                - script: echo this is ebiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii 
+                - task: DownloadPipelineArtifact@1
+                  inputs: 
+                  artifactName: 'FooBar'
+                  targetPath: $(System.DefaultWorkingDirectory)
 - stage: prod
   dependsOn: staging
   jobs:
