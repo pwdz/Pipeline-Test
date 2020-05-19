@@ -29,6 +29,8 @@ stages:
   dependsOn: test
   jobs:
   - job: deploy_staging
+    pool:
+      vmImage: 'Ubuntu 16.04'
     displayName: ebiiiiii
     enviroment: Staging
     strategy:
@@ -36,8 +38,6 @@ stages:
             deploy:
                 steps:
                     - script: echo this is ebiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii 
-    pool:
-      vmImage: 'Ubuntu 16.04'
     steps:
     - script: echo Staging
 
