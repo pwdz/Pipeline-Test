@@ -39,12 +39,10 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.Repository.LocalPath)'
         includeRootFolder: False
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'foooo'
-        publishLocation: 'Container'
-
+        - task: PublishPipelineArtifact@1
+          inputs: 
+            targetPath: $(System.DefaultWorkingDirectory)/bin/goApp
+            artifactName: goApp
 
 - stage: test
   dependsOn: build
@@ -66,11 +64,10 @@ stages:
         runOnce:
             deploy:
                 steps:
-                - task: DownloadBuildArtifacts@0
+                - task: DownloadPipelineArtifact@2
                   inputs:
-                    buildType: 'current'
-                    downloadType: 'single'
-                    downloadPath: '$(System.ArtifactsDirectory)'
+                    artifact: goApp
+
 - stage: prod
   dependsOn: staging
   jobs:
