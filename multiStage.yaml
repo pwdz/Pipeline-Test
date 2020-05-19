@@ -31,7 +31,7 @@ stages:
   jobs:
   - deployment: deploy_staging
     displayName: ebiiiiii
-    enviroment: Staging
+    environment: Staging
     strategy:
         runOnce:
             deploy:
